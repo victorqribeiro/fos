@@ -8,7 +8,13 @@ class Desktop extends HTMLElement {
 		
 		this.selected = null;
 		
-		this.addEventListener('mousedown', this.mouseDown )
+		this.addEventListener('mousedown', e => {
+		
+			if( 'button' in e && e.button === 0 )
+		
+				this.mouseDown( e )
+			
+		})
 		
 		this.addEventListener('mouseup', this.mouseUp )
 		
