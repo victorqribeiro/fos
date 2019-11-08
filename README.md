@@ -1,6 +1,6 @@
 # FOS - Fake Operating System
 
-Webcomponents to turn your web app into a fake operating system.
+Web Components to turn your web app into a fake operating system.
 
 ![screenshot](screenshot.png)
 
