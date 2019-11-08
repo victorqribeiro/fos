@@ -68,7 +68,7 @@ New components can be added later on.
 
 Let's create fake operating system.  
 
-When should start with a desktop.
+We should start with a desktop.
 
 ```html
 <fos-desktop>
@@ -77,7 +77,7 @@ When should start with a desktop.
 
 Nice!
 
-Now we should create some icons. You don't need to stress about where each icon will be on the fos-desktop. It will be spread out across the screen automatically, from top-left to bottom-right.
+Now we should create some icons. You don't need to stress about where each icon will be on the fos-desktop. They will be spread out across the screen automatically, from top-left to bottom-right.
 
 ```html
 <fos-desktop>
@@ -113,7 +113,7 @@ The window can be dragged around by its top part. It also can be resized by it's
 
 Our fake os is kinda lame right now, but when can mess around with the sytle using CSS. You can add a nice background image to the desktop and create some nice images for the icons, instead of letters.
 
-Well, you can do that whenever you want. But for this tutorial, we should add a bar on the bottom of the screen and a Start menu.
+Well, you can do that whenever you want. But for this tutorial, we should add a bar on the bottom of the screen and a Start menu. The Start menu will also control the windows.
 
 ```html
 <fos-desktop>
