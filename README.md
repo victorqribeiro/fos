@@ -215,3 +215,5 @@ You right. To address it, the fos-desktop have a special iconOffset to address t
 
 Well, that's it. Hope you had fun creating a Fake OS web app.
 
+## If you ever used this on a project, please let me know
+
