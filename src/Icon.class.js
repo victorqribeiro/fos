@@ -6,16 +6,6 @@ class Icon extends HTMLElement {
 			
 		this.shadow = this.attachShadow({mode: 'open'})
 		
-		const howMany = document.querySelectorAll('fos-icon').length
-		
-		const x = Math.floor( innerWidth / ( 64 + 8 ) )
-		
-		const offset = parseInt( document.querySelector('fos-desktop').iconOffset ) || 0
-		
-		this.top = ( 8 + Math.floor(howMany / x) * (64 + 8) ) + offset
-			
-		this.left = 8 + (64 + 8) * (howMany % x)
-		
 		this.dblClick = () => {
 			
 			let _w = document.querySelector(`fos-window[name=${this.control}] `)
@@ -53,6 +43,26 @@ class Icon extends HTMLElement {
 		
 	}
 	
+	calcPos(){
+	
+		if( !this.parentNode )
+		
+			return
+	
+		const parent = this.parentNode.getBoundingClientRect()
+
+		const x = Math.floor( (parent.width ? parent.width : 320) / ( 64 + 8 ) )
+		
+		const howMany = this.i
+		
+		const offset = parseInt( this.parentNode.iconOffset ) || 0
+		
+		this.top = ( 8 + Math.floor(howMany / x) * (64 + 8) ) + offset
+			
+		this.left = 8 + (64 + 8) * (howMany % x)
+
+	}
+	
 	attributeChangedCallback(name, oldValue, newValue) {
 
 		this.render()
@@ -61,14 +71,34 @@ class Icon extends HTMLElement {
   
   connectedCallback() {
   
+  	this.i = this.parentNode.querySelectorAll('fos-icon').length - 1
+ 
   	this.render()
   	
   }
 	
 	static get observedAttributes() {
 	
-    return ['href']
+    return ['href', 'fixed']
     
+  }
+  
+  get fixed() {
+  
+  	return this.hasAttribute('fixed') ? this.getAttribute('fixed') : null
+  
+  }
+  
+  set fixed(val) {
+  
+    if (val)
+    
+      this.setAttribute('fixed', val)
+      
+    else
+    
+      this.removeAttribute('fixed')
+  
   }
   
   get control() {
@@ -91,13 +121,15 @@ class Icon extends HTMLElement {
 
 	render(){
 
+		this.calcPos()
+
 		this.shadow.innerHTML = `
 		<style>
 			:host{
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				position: fixed;
+				position: absolute;
 				top: ${this.top}px;
 				left: ${this.left}px;
 				width: 64px;

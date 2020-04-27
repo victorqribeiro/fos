@@ -208,7 +208,7 @@ class Window extends HTMLElement {
   	const _window = document.createElement('div')
   	_window.id = 'window'
   	_window.addEventListener('click', () => { this.bringFront() } )
-  	
+			
   	const top = document.createElement('div')
   	top.id = 'top'
   	top.addEventListener('mousedown', () => { this.mouseDown()  } )
@@ -254,7 +254,7 @@ class Window extends HTMLElement {
   	this.shadow.appendChild( style )
   	
   	this.shadow.appendChild( _window )
-		
+  			
   }
   
 }

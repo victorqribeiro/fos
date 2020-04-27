@@ -26,8 +26,26 @@ class Desktop extends HTMLElement {
 		
 		this.addEventListener('touchmove', this.mouseMove )
 		
-		this.addEventListener("dragstart", e => e.preventDefault() );
+		this.addEventListener("dragstart", e => e.preventDefault() )
+		
+		const resizeObserver = new ResizeObserver(() => {
+		
+				this.updateIcons()
+				
+		})
+		
+		resizeObserver.observe(this)
 
+	}
+	
+	updateIcons(){
+	
+	  const icons = this.querySelectorAll('fos-icon')
+  	
+  	for(const i of icons)
+  	
+  		i.render()
+  		
 	}
 	
 	mouseUp(){
@@ -66,7 +84,7 @@ class Desktop extends HTMLElement {
 	
 	mouseMove(e){
 	
-		if( !this.selected ) return	
+		if( !this.selected || this.selected.fixed ) return	
 		
 		e.preventDefault()
 		
@@ -139,9 +157,12 @@ class Desktop extends HTMLElement {
   	this.shadow.innerHTML = `
 			<style>
 				:host{
+					position: relative;
 					display: block;
 					width: 100%;
 					height: 100%;
+					min-height: 240px;
+					min-width: 320px;
 					background-color: #666;
 				}
 			</style>
