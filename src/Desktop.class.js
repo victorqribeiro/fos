@@ -164,6 +164,7 @@ class Desktop extends HTMLElement {
 					min-height: 240px;
 					min-width: 320px;
 					background-color: #666;
+					overflow: auto;
 				}
 			</style>
 			<slot></slot>
