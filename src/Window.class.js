@@ -28,7 +28,7 @@ class Window extends HTMLElement {
 	
 	maximize(){
 
-		if( this.lastTop ){
+		if( this.lastTop !== null ){
 		
 			this.style.top = this.lastTop + "px"
 			
@@ -138,7 +138,7 @@ class Window extends HTMLElement {
   
   	const howMany = document.querySelectorAll('fos-window').length || 1
   
-  	this.top = innerHeight * 0.2 * howMany / 5 + 60
+  	this.top = innerHeight * 0.2 * howMany / 5 
   	
   	this.left = innerWidth * 0.1 * howMany / 5
   	
