@@ -108,8 +108,8 @@ class Menu extends HTMLElement {
 				}
 			</style>
 			<div>
-				<div id="title">${this.name}</div>
-				<div id="menu"><slot></slot></div>
+				<div id="title" part="title">${this.name}</div>
+				<div id="menu" part="window"><slot></slot></div>
 			</div>
 		`;
 		
