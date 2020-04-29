@@ -39,6 +39,8 @@ class Window extends HTMLElement {
 			this.style.height = this.lastHeight + "px"
 			
 			this.lastTop = this.lastLeft = this.lastWidth = this.lastHeight = null
+			
+			this.fixed = false
 		
 		}else{
 		
@@ -59,6 +61,8 @@ class Window extends HTMLElement {
 			this.style.width = innerWidth + "px"
 			
 			this.style.height = innerHeight + "px"
+			
+			this.fixed = true
 			
 		}
 
@@ -88,7 +92,7 @@ class Window extends HTMLElement {
 	
 	static get observedAttributes() {
 	
-    return ['name', 'title']
+    return ['name', 'title', 'fixed']
     
   }
   
@@ -125,6 +129,24 @@ class Window extends HTMLElement {
     else
     
       this.removeAttribute('title')
+    
+  }
+  
+  get fixed() {
+  
+    return this.hasAttribute('fixed') ? this.getAttribute('fixed') : null
+    
+  }
+  
+  set fixed(val) {
+  
+    if (val)
+    
+      this.setAttribute('fixed', val)
+      
+    else
+    
+      this.removeAttribute('fixed')
     
   }
   
