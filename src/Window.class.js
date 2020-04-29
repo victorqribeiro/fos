@@ -210,6 +210,7 @@ class Window extends HTMLElement {
   	_window.addEventListener('click', () => { this.bringFront() } )
 			
   	const top = document.createElement('div')
+  	top.part = 'top'
   	top.id = 'top'
   	top.addEventListener('mousedown', () => { this.mouseDown()  } )
   	top.addEventListener('mouseup', () => { this.mouseUp() } )
@@ -225,10 +226,12 @@ class Window extends HTMLElement {
   	
   	const _max = document.createElement('button')
   	_max.innerText = "[]"
+  	_max.part = "buttons"
   	_max.addEventListener('click', () => { this.maximize() } )
   	
   	const close = document.createElement('button')
   	close.innerText = "x"
+  	close.part = "buttons"
   	close.addEventListener('click', () => { this.close() } )
   	
   	buttons.appendChild( _max )
