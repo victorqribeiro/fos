@@ -179,8 +179,6 @@ class Window extends HTMLElement {
 				position: fixed;
 				top: ${this.top}px;
 				left: ${this.left}px;
-				width: ${this.width}px;
-				height: ${this.height}px;
 				z-index: ${this.index};
 				min-width: 320px;
 				min-height: 240px;
@@ -220,6 +218,7 @@ class Window extends HTMLElement {
 				flex: 1 1 auto;
 				overflow: auto;
 				position: relative;
+				min-height: 205px;
 			}
 			#border{
 				height: 10px;
@@ -266,7 +265,7 @@ class Window extends HTMLElement {
   	content.id = 'content'
   	
   	const slot = document.createElement('slot')
-  	
+
   	content.appendChild( slot )
   	
   	const border = document.createElement('div')
