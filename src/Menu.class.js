@@ -8,13 +8,15 @@ class Menu extends HTMLElement {
 		
 		this.addEventListener('click', e => {
 			
+			/*
 			const menus = document.querySelectorAll('fos-menu')
 			
-			for(const menu of menus){
+			
+			for(const menu of menus)
 			
 				menu.visible = false
 				
-			}
+			*/
 			
 			this.visible = true
 			
@@ -39,6 +41,12 @@ class Menu extends HTMLElement {
   }
   
   connectedCallback() {
+  
+  	this.bar = this.parentNode
+  	
+  	while( this.bar.tagName !== 'FOS-BAR' )
+  	
+  		this.bar = this.bar.parentNode
   
   	this.render()
   	
@@ -97,11 +105,11 @@ class Menu extends HTMLElement {
 				#menu{
 					display: `+(this.visible ? 'block' : 'none')+`;
 					position: absolute;
-					`+(this.parentNode ? this.parentNode.position : 'bottom')+`: 40px;
+					`+(this.bar ? this.bar.position : 'bottom')+`: 40px;
 					background-color: #AAA;
 					padding: 1em;
 					border: solid 1px black;
-					border-`+(this.parentNode ? this.parentNode.position : 'bottom')+`: 0;
+					border-`+(this.bar ? this.bar.position : 'bottom')+`: 0;
 				}
 				#title:hover{
 					color: gray;
