@@ -12,6 +12,9 @@ This is my first experiment writting webcomponents. I kind ran with the idea and
 
 ## How to use
 
+[Watch the creation of a basic web app using FOS here](https://www.youtube.com/watch?v=rddE1jKPgWk)
+
+
 Add the JavaScript file to your project
 
 ```html
