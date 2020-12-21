@@ -30,7 +30,7 @@ class Icon extends HTMLElement {
 			
 		      this.tapedTwice = true
 		      
-		      setTimeout( ()=>{ this.tapedTwice = false; }, 300 )
+		      setTimeout( ()=>{ this.tapedTwice = false }, 300 )
 		      
 		      return false
 		  }
@@ -57,7 +57,7 @@ class Icon extends HTMLElement {
 		
 		const offset = parseInt( this.parentNode.iconOffset ) || 0
 		
-		this.top = ( 8 + Math.floor(howMany / x) * (64 + 8) ) + offset
+		this.top = ( 8 + Math.floor(howMany / x) * (96 + 8) ) + offset
 			
 		this.left = 8 + (64 + 8) * (howMany % x)
 
@@ -79,7 +79,7 @@ class Icon extends HTMLElement {
 	
 	static get observedAttributes() {
 	
-    return ['href', 'fixed']
+    return ['href', 'fixed', 'name']
     
   }
   
@@ -119,6 +119,24 @@ class Icon extends HTMLElement {
       
   }
 
+  get name() {
+  
+  	return this.hasAttribute('name') ? this.getAttribute('name') : null
+  
+  }
+  
+  set name(val) {
+  
+    if (val)
+    
+      this.setAttribute('name', val)
+      
+    else
+    
+      this.removeAttribute('name')
+  
+  }
+
 	render(){
 
 		this.calcPos()
@@ -141,7 +159,6 @@ class Icon extends HTMLElement {
 				font-size: 32px;
 				border-radius: 5px;
 				box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
-				overflow: hidden;
 				-webkit-touch-callout: none;
 					-webkit-user-select: none;
 					 -khtml-user-select: none;
@@ -149,6 +166,13 @@ class Icon extends HTMLElement {
 							-ms-user-select: none;
 							    user-select: none;
 			}
+      ::after {
+        content: '${this.name ? this.name : ''}';
+        position: absolute;
+        top: 76px;
+        font-size: 0.5em;
+        line-height: 1em;
+      }
 		</style>
 		<slot></slot>
 	`;
