@@ -8,6 +8,8 @@ class MenuItem extends HTMLElement {
 		
 		this.open = (e) => {
 		
+		  if( 'keyCode' in e && e.keyCode !== 13 ) return
+		
 			let elem = this.parentNode
 			
 			do{
@@ -29,6 +31,8 @@ class MenuItem extends HTMLElement {
 		}
 		
 		this.addEventListener('click', this.open)
+		
+		this.addEventListener('keydown', this.open)
 
 	}
 	
@@ -41,6 +45,12 @@ class MenuItem extends HTMLElement {
   
   connectedCallback() {
   
+  	if (!this.hasAttribute('tabindex')) {
+	  
+      this.setAttribute('tabindex', 0)
+      
+    }
+    
   	this.render()
   	
   }
