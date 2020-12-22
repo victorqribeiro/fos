@@ -6,22 +6,17 @@ class Menu extends HTMLElement {
 	
 		this.shadow = this.attachShadow({mode: 'open'})
 		
-		this.addEventListener('click', e => {
-			
-			/*
-			const menus = document.querySelectorAll('fos-menu')
-			
-			
-			for(const menu of menus)
-			
-				menu.visible = false
-				
-			*/
+		this.open = (e) => {
+
+			if( 'keyCode' in e && e.keyCode !== 13 ) return
 			
 			this.visible = true
-			
+
+		}
 		
-		});
+		this.addEventListener('click', this.open)
+		
+  	this.addEventListener('keydown', this.open)
 		
 		document.body.addEventListener('click', e => {
 		
@@ -29,7 +24,7 @@ class Menu extends HTMLElement {
 		
 			this.visible = false
 		
-		});
+		})
 		
 	}
 	
@@ -41,6 +36,12 @@ class Menu extends HTMLElement {
   }
   
   connectedCallback() {
+
+  	if (!this.hasAttribute('tabindex')) {
+	  
+      this.setAttribute('tabindex', 0)
+      
+    }
   
   	this.bar = this.parentNode
   	

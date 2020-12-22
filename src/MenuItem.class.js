@@ -6,7 +6,7 @@ class MenuItem extends HTMLElement {
 	
 		this.shadow = this.attachShadow({mode: 'open'})
 		
-		this.addEventListener('click', e => {
+		this.open = (e) => {
 		
 			let elem = this.parentNode
 			
@@ -25,8 +25,10 @@ class MenuItem extends HTMLElement {
 				_w.bringFront()
 				
 			}
+			
+		}
 		
-		});
+		this.addEventListener('click', this.open)
 
 	}
 	
@@ -71,7 +73,7 @@ class MenuItem extends HTMLElement {
   	this.shadow.innerHTML = `
 			<style>
 				:host{
-					display:block;
+					display: block;
 					background-color: inherit;
 				}
 				div:hover{

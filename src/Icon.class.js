@@ -6,7 +6,9 @@ class Icon extends HTMLElement {
 			
 		this.shadow = this.attachShadow({mode: 'open'})
 		
-		this.dblClick = () => {
+		this.open = (e) => {
+		
+		  if( 'keyCode' in e && e.keyCode !== 13 ) return
 			
 			let _w = document.querySelector(`fos-window[name=${this.control}] `)
 			
@@ -20,7 +22,9 @@ class Icon extends HTMLElement {
 				
 		}
 		
-		this.addEventListener('dblclick', this.dblClick )
+		this.addEventListener('dblclick', this.open )
+		
+		this.addEventListener('keydown', this.open )
 		
 		this.tapedTwice = false
 		
@@ -70,6 +74,12 @@ class Icon extends HTMLElement {
   }
   
   connectedCallback() {
+  
+  	if (!this.hasAttribute('tabindex')) {
+	  
+      this.setAttribute('tabindex', 0)
+      
+    }
   
   	this.i = this.parentNode.querySelectorAll('fos-icon').length - 1
  
