@@ -37,6 +37,7 @@ This is a wrapper for all the icons, bars, windows...
 ### fos-icon
 
 This is a icon. It's draggable by default. It moves on a grid of 8 x 8 pixels.
+*fixed* - Prevent the icon from bing dragged.
 
 ### fos-window
 
