@@ -220,5 +220,6 @@ Well, that's it. Hope you had fun creating a Fake OS web app.
 
 ## Projects that uses FOS
 
-[Virtual Cybersecurity Escape Room](https://eloeffler.gitlab.io/eloeffler/proto-vcser/)
+[Virtual Cybersecurity Escape Room](https://eloeffler.gitlab.io/eloeffler/proto-vcser/)  
+[JoeVlabs](http://joevlabs.com)  
 
